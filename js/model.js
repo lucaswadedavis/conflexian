@@ -17,11 +17,17 @@ model = {
     ],
 
 	images128: [
-		"./images/headshot-128.png"
+		{type:"image128",text:"me",url:"#",image:"./images/headshot-128.png"}
+		//{type:"image128",text:"mandala time",url:"http://holograf.io",image:"./images/holograf128.png"},
+		//{type:"image128",text:"mandala time",url:"http://lucaswadedavis.github.io/coloroordinates/",image:"./images/coloroordinates128.png"},
+		//{type:"image128",text:"mandala time",url:"http://fauxpoe.com",image:"./images/fauxpoe128.png"}
 	],
 	
 	images256: [
-		"./images/headshot-256.png"
+		{type:"image256",text:"me",url:"#",image:"./images/headshot-256.png"}
+		//{type:"image256",text:"mandala time",url:"http://holograf.io",image:"./images/holograf256.png"},
+		//{type:"image256",text:"mandala time",url:"http://lucaswadedavis.github.io/coloroordinates/",image:"./images/coloroordinates256.png"},
+		//{type:"image256",text:"mandala time",url:"http://fauxpoe.com",image:"./images/fauxpoe256.png"}
 	],
 
 	icons: [

@@ -180,14 +180,24 @@ view.posthoc = function() {
 	$("td:empty").each(function() {
 
 			if ($(this).height() > 150) {
+				var img = davis.pick(model.images128);
 				$(this).css({
-					"background": "url(" + davis.pick(model.images128) + ") no-repeat " + "center" + ""
+					"background": "url(" + img.image + ") no-repeat " + "center" + "",
+					"border":"0px"
+				});
+				$(this).click(function(){
+					window.location = img.url;
 				});
 			}
 
 			if ($(this).height() > 256 && $(this).width() > 256) {
+				var img=davis.pick(model.images256);
 				$(this).css({
-					"background": "url(" + davis.pick(model.images256) + ") no-repeat center"
+					"background": "url(" + img.image + ") no-repeat center",
+					"border":"0px"
+				});
+				$(this).click(function(){
+					window.location = img.url;
 				});
 			}
 	});
