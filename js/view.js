@@ -86,9 +86,10 @@ view.content = function() {
 	d += "</h3>";
 	content.push(d);
 	d = "";
-	_(davis.bell(6)).times(function() {
-		d += "<img src='" + davis.pick(model.icons) + "' >";
-	});
+	for (var i=0;i<model.icons.length;i++){
+		var icon = model.icons[i];
+		d += "<a href='"+icon.url+"'><img src='" + icon.image + "' ></a>";
+	}
 	content.push(d);
 	content.push("");
 	content.push("");
@@ -125,7 +126,12 @@ view.posthoc = function() {
 	d += style("p", {
 		"padding": "10px",
 		"text-align": "left",
-	})
+	});
+
+	d += style("a",{
+		"text-decoration":"none",
+		"color":"#fff"
+	});
 
 	d += style("td", {
 		"border": model.borderWidth + "px solid " + model.bgColor.text,
@@ -173,47 +179,20 @@ view.posthoc = function() {
 
 	$("td:empty").each(function() {
 
-			if ($(this).height() > 100) {
-				var positions = ["center", "top", "right", "left", "bottom"];
+			if ($(this).height() > 150) {
 				$(this).css({
-					"background": "url(" + davis.pick(model.images) + ") no-repeat " + "center" + ""
+					"background": "url(" + davis.pick(model.images128) + ") no-repeat " + "center" + ""
 				});
 			}
 
+			if ($(this).height() > 256 && $(this).width() > 256) {
+				$(this).css({
+					"background": "url(" + davis.pick(model.images256) + ") no-repeat center"
+				});
+			}
 	});
 };
 
-view.graph = function(id) {
-	var w = parseInt($("td#" + id).css("width"));
-	var h = parseInt($("td#" + id).css("height"));
-
-	//console.log(w+" "+h);
-	if (h > 50) {
-		$("#" + id).css({
-			"border": "0px",
-			"background": $("body").css("background"),
-			"padding": "0px",
-			"margin": "0px",
-			"border-spacing": "0px",
-			"border-radius": "0px",
-			"vertical-align": "top"
-		});
-		var c = new Raphael(id, w, h);
-		var r = Math.abs(Math.floor(Math.min(w, h) / 2) - 10);
-		var x = (w / 2) + 10;
-		var y = (h / 2) + 10;
-		var data = davis.sumTo(12);
-		var options = {
-			colors: _.pluck(model.colors, 'rgb')
-		};
-		var doughnut = c.piechart(x, y, r, data, options);
-		var dHole = c.circle(x, y, (r / 2))
-			.attr({
-				"fill": $("body").css("background-color"),
-				"stroke": "#fff"
-			});
-	}
-};
 
 var style = function(tag, contents) {
 	var d = "";
