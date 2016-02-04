@@ -8,8 +8,8 @@ view = {};
 
 view.init = function() {
 	var d = "";
-	d += "<table width='" + model.width + "%' class='container' style='table-layout:fixed;'>";
-	d += "</table>";
+	d += "<div class='container' >";
+	d += "</div>";
 
 	$("body").html(d);
 
@@ -17,7 +17,7 @@ view.init = function() {
 	while (selector < model.content.length) {
 		var frame = davis.pick(model.frame);
 		var row = view.row(frame, selector);
-		$("table.container").append(row);
+		$("div.container").append(row);
 		selector += frame.length;
 	}
 
@@ -32,17 +32,17 @@ view.row = function(colspans, model_content_index) {
 		var colspans = davis.pick(model.frame);
 	}
 	var d = "";
-	d += "<tr>";
+	d += "<div class='flex-container'>";
 	for (var i = 0; i < colspans.length; i++) {
 		if (model_content_index < model.content.length) {
-			d += "<td  class='" + davis.pick(model.cssClasses).name + "' colspan='" + colspans[i] + "'>" + model.content[model_content_index] + "</td>";
+			d += "<div  class='main-cell " + davis.pick(model.cssClasses).name + "' style='flex-grow: " + colspans[i] + ";'>" + model.content[model_content_index] + "</div>";
 			model_content_index++;
 		}
 		else {
-			d += "<td  class='" + davis.pick(model.cssClasses).name + "' colspan='" + colspans[i] + "'>" + view.content() + "</td>";
+			d += "<div  class='main-cell " + davis.pick(model.cssClasses).name + "' style='flex-grow:" + colspans[i] + ";'>" + view.content() + "</div>";
 		}
 	}
-	d += "</tr>";
+	d += "</div>";
 	return d;
 };
 
@@ -105,7 +105,7 @@ view.posthoc = function() {
 	var d = "";
 
 	d += style("body", {
-		"font-size": (0.1 * _.random(8, 1.2)) + "em",
+		"font-size": (_.random(0.9, 1.1)) + "em",
 		"margin": "0px",
 		"padding": "0px",
 		"width": "100%",
@@ -133,21 +133,21 @@ view.posthoc = function() {
 		"color":"#fff"
 	});
 
-	d += style("td", {
+	d += style("div.main-cell", {
 		"border": model.borderWidth + "px solid " + model.bgColor.text,
-		"margin": "0px",
+		"margin": model.borderSpacing + "px",
 		"padding": (2 + davis.random(18)),
 		"border-radius": model.borderRadius + "px",
 		"text-align": "center"
 	});
-	d += style("div", {
+  
+	d += style("div.link", {
 		"border": davis.random(5) + "px solid #000",
 		"padding": (2 + davis.random(18)),
 		"border-radius": model.borderRadius + "px",
 		"text-align": "center",
 		"margin": "2px 20px 20px 20px",
 	});
-
 
 	var color = davis.pick(model.colors);
 	d += style("div.link:hover", {
@@ -157,15 +157,20 @@ view.posthoc = function() {
 		"cursor": "pointer"
 	});
 
-	d += style("table", {
-		"border-spacing": model.borderSpacing + "px",
+	d += style("div.container", {
 		"margin": "0px auto 0px auto",
-		"table-layout": "fixed",
+		//"table-layout": "fixed",
 		"min-height": "99%",
-		"padding": "0px"
+		"padding": "0px",
+    "width": model.width + "%"
+  });
+
+  d += style("div.flex-container", {
+    "display": "flex",
+    "align-items": "stretch"
 	});
 
-	for (var i = 0; i < model.cssClasses.length; i++) {
+  for (var i = 0; i < model.cssClasses.length; i++) {
 		d += model.cssClasses[i].style;
 		//console.log(model.cssClasses[i].style);
 	}
@@ -173,11 +178,11 @@ view.posthoc = function() {
 
 	$("style").append(d);
 
-	$("td:has(h1)").css({
+	$("div.main-cell:has(h1)").css({
 		"vertical-align": "middle"
 	});
 
-	$("td:empty").each(function() {
+	$("div.main-cell:empty").each(function() {
 
 			if ($(this).height() > 150) {
 				var img = davis.pick(model.images128);

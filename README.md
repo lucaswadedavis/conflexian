@@ -1,3 +1,3 @@
-# Contrarian
+# Conflexian
 
-is an old project that evolves website layouts.
+is an old project that evolves website layouts, updated to use flexbox instead of tables.
