@@ -167,7 +167,8 @@ view.posthoc = function() {
 
   d += style("div.flex-container", {
     "display": "flex",
-    "align-items": "stretch"
+    "align-items": "stretch",
+    "flex-flow": "row wrap"
 	});
 
   for (var i = 0; i < model.cssClasses.length; i++) {
