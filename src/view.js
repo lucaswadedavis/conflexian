@@ -6,7 +6,26 @@ $(document).ready(function() {
 
 view = {};
 
-view.init = function() {
+view.init = function () {  
+  view.landingPage();
+  
+  //view.createNewDesign();
+
+};
+
+view.landingPage = function () {
+  var d = "";
+  d += "<div class='landing'>";
+  d += "<h1>Conflexian</h1>";
+  d += "<p>Conflexian uses evolution to create new web designs in real time.</p>";
+  d += "<p>You don't need skills. You just need taste.</p>";
+  d += "<p>Press 'n' for a new design, 'l' to let Conflexian know you like a design, and 's' to see designs you've liked already.</p>";
+  d += "<button id='get-started'>Get Started</button>";
+  d += "</div>";
+  $("body").html(d);
+};
+
+view.createNewDesign = function() {
 	var d = "";
 	d += "<div class='container' >";
 	d += "</div>";

@@ -1,5 +1,11 @@
 var hark = {};
 hark.init = function() {
+
+  $("body").on("click", "button#get-started", function () {
+
+    view.createNewDesign();
+  });
+
 	$("body").keypress(function(event) {
 		if (event.which == 108) {
 			console.log("Love it!");
@@ -29,7 +35,7 @@ hark.init = function() {
 				opacity: 0,
 				backgroundColor: model.bgColor
 			}, 400, function() {
-				view.init();
+				view.createNewDesign();
 				$("body").animate({
 					opacity: 1
 				}, 400);
