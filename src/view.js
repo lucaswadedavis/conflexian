@@ -35,11 +35,11 @@ view.row = function(colspans, model_content_index) {
 	d += "<div class='flex-container'>";
 	for (var i = 0; i < colspans.length; i++) {
 		if (model_content_index < model.content.length) {
-			d += "<div  class='main-cell " + davis.pick(model.cssClasses).name + "' style='flex-grow: " + colspans[i] + ";'>" + model.content[model_content_index] + "</div>";
+			d += "<div  class='main-cell " + davis.pick(model.cssClasses).name + "' style='flex: " + colspans[i] + ";'>" + model.content[model_content_index] + "</div>";
 			model_content_index++;
 		}
 		else {
-			d += "<div  class='main-cell " + davis.pick(model.cssClasses).name + "' style='flex-grow:" + colspans[i] + ";'>" + view.content() + "</div>";
+			d += "<div  class='main-cell " + davis.pick(model.cssClasses).name + "' style='flex:" + colspans[i] + ";'>" + view.content() + "</div>";
 		}
 	}
 	d += "</div>";
@@ -185,20 +185,25 @@ view.posthoc = function() {
 	$("div.main-cell:empty").each(function() {
 
 			if ($(this).height() > 150) {
-				var img = davis.pick(model.images128);
+        var img = davis.pick(model.images128);
+        var d = "<img src='" + img.image + "' />";
+        $(this).html(d);
 				$(this).css({
-					"background": "url(" + img.image + ") no-repeat " + "center" + "",
-					"border":"0px"
+					"border":"0px",
+          "background": "transparent",
+          "align-self": "center"
 				});
 				$(this).click(function(){
 					window.location = img.url;
 				});
-			}
+			  
+      }
 
 			if ($(this).height() > 256 && $(this).width() > 256) {
 				var img=davis.pick(model.images256);
-				$(this).css({
-					"background": "url(" + img.image + ") no-repeat center",
+        var d = "<img src='" + img.image + "' />";
+				$(this).html(d);
+        $(this).css({
 					"border":"0px"
 				});
 				$(this).click(function(){

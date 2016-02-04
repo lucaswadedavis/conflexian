@@ -1,6 +1,6 @@
 model = {
-	appName: "contrarian",
-	title: "contrarian",
+	appName: "conflexian",
+	title: "conflexian",
 
 	bounds: {},
 	paper: {},
