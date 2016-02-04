@@ -22,10 +22,8 @@ hark.init = function() {
 				width: $(document).width(),
 				height: $(window).height()
 			});
-			//console.log(model);
 		}
 		else if (event.which == 110) {
-			console.log("Next!");
 			controller.init();
 			$("body").animate({
 				opacity: 0,
@@ -44,7 +42,6 @@ hark.init = function() {
 			});
 		}
 		else if (event.which == 115 && model.stock.canvases) {
-			console.log("Show me everything! (the canvases)");
 			$("body").animate({
 				opacity: 0,
 				backgroundColor: "#eee"
