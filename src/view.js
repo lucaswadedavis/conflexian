@@ -8,9 +8,6 @@ view = {};
 
 view.init = function () {  
   view.landingPage();
-  
-  //view.createNewDesign();
-
 };
 
 view.landingPage = function () {

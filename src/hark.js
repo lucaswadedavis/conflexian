@@ -1,6 +1,6 @@
 var hark = {};
 hark.init = function() {
-  var KEYS = {'N': 110, 'L': 108, 'S': 115};
+  var KEYS = {'C': 99, 'N': 110, 'L': 108, 'S': 115};
 
   $("body").on("click", "button#get-started", function () {
 			controller.init();
@@ -18,7 +18,6 @@ hark.init = function() {
 
 	$("body").keypress(function(event) {
 		if (event.which === KEYS.L) {
-			//console.log("Love it!");
 			controller.love("colors", model.colors[0]);
 			controller.love("colors", model.colors[1]);
 			controller.love("greys", model.colors[2]);
@@ -51,7 +50,7 @@ hark.init = function() {
 				}, 400);
 			});
 		}
-		else if (event.which == 99) {
+		else if (event.which === KEYS.C) {
 			$(document).ready(function() {
 				console.log("Show me everything! (the codes)");
 				console.log("<! DOCTYPE html><html><head><style>" + $('style').html() + "</style></head><body>" + $("body").html() + "</body></html>");
