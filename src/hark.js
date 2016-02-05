@@ -1,14 +1,24 @@
 var hark = {};
 hark.init = function() {
+  var KEYS = {'N': 110, 'L': 108, 'S': 115};
 
   $("body").on("click", "button#get-started", function () {
+			controller.init();
+			$("body").animate({
+				opacity: 0,
+				backgroundColor: model.bgColor
+			}, 400, function() {
+				view.createNewDesign();
+				$("body").animate({
+					opacity: 1
+				}, 400);
+			});
 
-    view.createNewDesign();
   });
 
 	$("body").keypress(function(event) {
-		if (event.which == 108) {
-			console.log("Love it!");
+		if (event.which === KEYS.L) {
+			//console.log("Love it!");
 			controller.love("colors", model.colors[0]);
 			controller.love("colors", model.colors[1]);
 			controller.love("greys", model.colors[2]);
@@ -29,7 +39,7 @@ hark.init = function() {
 				height: $(window).height()
 			});
 		}
-		else if (event.which == 110) {
+		else if (event.which === KEYS.N) {
 			controller.init();
 			$("body").animate({
 				opacity: 0,
@@ -47,7 +57,7 @@ hark.init = function() {
 				console.log("<! DOCTYPE html><html><head><style>" + $('style').html() + "</style></head><body>" + $("body").html() + "</body></html>");
 			});
 		}
-		else if (event.which == 115 && model.stock.canvases) {
+		else if (event.which === KEYS.S && model.stock.canvases) {
 			$("body").animate({
 				opacity: 0,
 				backgroundColor: "#eee"
