@@ -1,0 +1,27 @@
+{
+  "name": "conflexian",
+  "version": "0.0.0",
+  "description": "evolving web design",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/lucaswadedavis/conflexian.git"
+  },
+  "keywords": [
+    "genetic",
+    "algorithm",
+    "design"
+  ],
+  "author": "Luke Davis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lucaswadedavis/conflexian/issues"
+  },
+  "homepage": "https://github.com/lucaswadedavis/conflexian#readme",
+  "devDependencies": {
+    "webpack": "^1.12.13"
+  }
+}
